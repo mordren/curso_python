@@ -1,0 +1,62 @@
+from datetime import datetime, date
+from time import strptime
+#Escrever o antecessor do número digitado.
+#exercicio 1
+def ler_antecessor():    
+    continuar = True    
+    while(continuar):
+        numero = input('Digite um número para descobrir seu antecessor: ')
+        if(numero.isdigit()):
+            print(int(numero)-1)
+            continuar = False
+#Ler a base e altura de um retangulo e calcular sua área
+#exercício 2
+def calcular_area():
+    continuar = True
+    while(continuar):
+        base = input('Digite a BASE do seu retángulo: ')
+        if(base.isdigit()):
+            while(True):
+                altura = input('Digite a ALTURA do seu retángulo: ') 
+                if(altura.isdigit()):
+                    area = int(base)*int(altura)
+                    print(f'A área do seu retangulo é: {area}')
+                    exit()
+
+#calcular a idade da pessoa em dias     
+#exercício 3               
+def calcular_idade():
+    while(True):
+        data = input('Qual é sua data de nascimento formato DD/MM/AAAA : ')
+        try:
+            dias = (date.today() - datetime.strptime(data, '%d/%m/%Y').date()).days
+            print(f'Você viveu : {dias} dias')  
+            exit()          
+        except Exception as e: 
+            print('Digite novamente')            
+        
+#calculo de eleição:
+#exercício 4
+def calcula_eleicao():
+    brancos = int(input('Quantos votos BRANCOS tivemos na eleição ? '))
+    nulos = int(input('Quantos votos NULOS tivemos na eleição ? '))
+    validos = int(input('Quantos votos VALIDOS tivemos na eleição ? '))
+    total = brancos+nulos+validos
+    
+    por_brancos = round(((brancos/total)*100),2)
+    por_nulos =  round(((nulos/total)*100),2)
+    por_validos =  round(((validos/total)*100),2)
+    
+    print('A eleição acabou assim ')
+    print(f'Brancos: {por_brancos}%')
+    print(f'Nulos: {por_nulos}%')
+    print(f'Validos: {por_validos}%')    
+    
+#Exercício 5
+def calcular_reajuste():
+    salario = int(input('Digite o salário atual do colaborador : '))
+    reajuste = float(input('Digite o reajuste do colaborador em % : '))
+    salario = salario + salario * (reajuste / 100)
+    print('O salário reajustado do colaborador é: {} '.format(salario))
+
+    
